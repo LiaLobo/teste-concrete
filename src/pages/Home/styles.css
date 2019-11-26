@@ -1,5 +1,13 @@
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
 .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 1152px;
     height: 700px;
-    background-color: var(--white);
   }

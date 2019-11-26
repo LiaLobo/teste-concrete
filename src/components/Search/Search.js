@@ -3,7 +3,7 @@ import IconSearch from '../../assets/icons/Search Icon.png'
 
 import './search.css'
 
-const Search = (props) => {
+const Search = () => {
     return (
         <div className='search'>
             <input className='search-input'></input>
