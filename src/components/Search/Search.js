@@ -1,16 +1,17 @@
-import React, { Fragment }from 'react'
+import React from 'react'
 import IconSearch from '../../assets/icons/Search Icon.png'
 
-import './button.css'
+import './search.css'
 
-const Button = (props) => {
+const Search = (props) => {
     return (
-        <Fragment>
+        <div className='search'>
+            <input className='search-input'></input>
             <button>
                 <img className='search-icon' src={IconSearch} alt='Ícone de busca'/>
             </button>
-        </Fragment>
+        </div>
     )
 }
 
-export default Button
+export default Search
