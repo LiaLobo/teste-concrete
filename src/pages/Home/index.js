@@ -7,7 +7,10 @@ import './styles.css'
 export default function Home() {
     return (
         <div className='home'>
-            <Logo />
+            <Logo
+                classFontH1='github-search'
+                classFontSpan='github-search text-style-1'
+            />
             <Search />
         </div>
     )

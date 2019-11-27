@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
+.result {
+    width: 100vw;
+    display: flex;
+    margin-top: 35px;
+    margin-right: 27px;   
+}

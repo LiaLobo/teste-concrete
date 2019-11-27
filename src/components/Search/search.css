@@ -14,8 +14,8 @@ button {
   .search-icon {
     width: 30px;
     height: 30.1px;
-    box-shadow: 0 0 4px 0 #000000a2 solid;
-    /* background-color: var(--white); */
+    box-shadow: 0 0 4px #000000a2 solid;
+    background-color: var(--white);
   }
 
   .search-input {

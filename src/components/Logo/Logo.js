@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 
 import './logo.css'
 
-const Logo = () => {
+const Logo = (props) => {
+    const { classFontH1, classFontSpan } = props
     return (
         <div>
             <Link to='/'>
-                <h1 className='github-search'> Github <span className='github-search text-style-1'> Search </span></h1>
+                <h1 className={classFontH1}> Github <span className={classFontSpan}> Search </span></h1>
             </Link>
         </div>
     )
