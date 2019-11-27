@@ -6,7 +6,7 @@ import './search.css'
 const Search = () => {
     return (
         <div className='search'>
-            <input className='search-input'></input>
+            <input className='search-input' type='text'></input>
             <button>
                 <img className='search-icon' src={IconSearch} alt='Ícone de busca'/>
             </button>
