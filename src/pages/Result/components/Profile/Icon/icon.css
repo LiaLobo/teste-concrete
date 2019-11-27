@@ -1,0 +1,41 @@
+.margin {
+  margin: 5px 25px;
+}
+
+.organization-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.location-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.star-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.respositories-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.followers {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-name {
+  width: 240px;
+  height: 22px;
+  font-family: Raleway;
+  font-size: 20px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #5c5c5c;
+}
