@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.result {
+.result-nav {
     width: 100vw;
     display: flex;
     margin-top: 35px;
