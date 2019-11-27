@@ -8,7 +8,7 @@ const Logo = (props) => {
     return (
         <div>
             <Link to='/'>
-                <h1 className={classFontH1}> Github <span className={classFontSpan}> Search </span></h1>
+                <h1 className={classFontH1}> Github <span className={classFontSpan}>Search</span></h1>
             </Link>
         </div>
     )

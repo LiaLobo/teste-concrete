@@ -6,9 +6,10 @@
 
 button {
     width: 100px;
-    height: 50px;
+    height: 40px;
     border-radius: 2px;
     background-color: #ac53f2;
+    border: none;
   }
 
   .search-icon {
@@ -20,6 +21,6 @@ button {
 
   .search-input {
     width: 650px;
-    height: 50px;
+    height: 40px;
     /* background-color: var(--white); */
   }
