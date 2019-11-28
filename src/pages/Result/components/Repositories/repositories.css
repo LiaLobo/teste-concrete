@@ -1,0 +1,31 @@
+.repo-name {
+    width: 375.5px;
+    height: 40.8px;
+    font-family: Raleway;
+    font-size: 35px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ac53f2;
+    margin: 0;
+}
+
+.repo-description {
+    width: 600px;
+    height: 25.5px;
+    font-family: Raleway;
+    font-size: 20px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    margin: 0;
+}
+
+.repo-margin {
+    margin-top: 60px;
+}

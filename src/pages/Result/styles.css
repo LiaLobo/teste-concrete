@@ -8,3 +8,12 @@
     margin-top: 35px;
     margin-right: 27px;   
 }
+
+.result-flex {
+    display: flex;
+
+}
+
+.result-margin {
+    margin: 0;
+}
