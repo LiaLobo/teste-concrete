@@ -1,5 +1,9 @@
 .margin {
-  margin: 5px 25px;
+  margin: 5px 0 0 25px;
+}
+
+.distance-icons {
+  margin-bottom: 14px;
 }
 
 .organization-icon {
