@@ -23,7 +23,7 @@ class Home extends Component {
         this.state = {
             value: '',
             user: {},
-            repos: []
+            repos: {}
         }
     }
 
@@ -31,7 +31,6 @@ class Home extends Component {
         this.setState({
             value: event.target.value
         })
-        console.log(this.state.value)
     }
 
     search = () => {
@@ -43,15 +42,19 @@ class Home extends Component {
         ).catch(err => console.log(err))
     }
 
-    // pesquisarRepos = (login) => {
-    //     getRepos(login).then(res => {
-    //       //  this.setState({ repos: res.data})
-    //         this.props.history.push('/repos', state={
-    //             data: res.data
-    //         });
-    //     })
-        
-    // }
+    searchRepos = (login) => {
+        getRepos(login).then((response) => {
+            console.log(response)
+        //    this.setState({ repos: response.data})
+           this.props.history.push({
+                pathname: '/result',
+                state: { repos: response.data }
+            })
+        })
+            // this.props.history.push('/repositories', this.setState = {
+            //     data: response.data
+            // })
+    }
 
     render() {
         return (
@@ -61,7 +64,7 @@ class Home extends Component {
                     classFontSpan='github-search text-style-1'
                 />
                 <Search
-                    click={() => this.search}
+                    click={() => this.searchRepos(this.state.value)}
                     inputValue={this.catchValue}
                 />
             </div>

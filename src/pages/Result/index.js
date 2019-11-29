@@ -5,7 +5,10 @@ import Repositories from './components/Repositories/Repositories'
 
 import './styles.css'
 
-const Result = () => {
+const Result = (props) => {
+    
+     const { repos } = props.location.state
+      console.log(repos)
     return (
         <Fragment>
             <div className='result-nav'>
@@ -16,7 +19,13 @@ const Result = () => {
                     <Profile />
                 </div>
                 <div>
-                    <Repositories />
+                    <ul>
+                        {repos.map(i => (
+                            <li key={i.id}>
+                                <Repositories nome={i.name}/>
+                             </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </Fragment>

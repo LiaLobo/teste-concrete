@@ -5,7 +5,8 @@ import Star from '../../../../assets/icons/star icon.png'
 
 import './repositories.css'
 
-const Repositories = () => {
+const Repositories = (props) => {
+    console.log(props)
     return (
         <div className='repo-margin'>
             <Description
@@ -13,6 +14,7 @@ const Repositories = () => {
                 userName='Darth Vader Repo'
                 classDescriptionP='repo-description'
                 userLogin='Anakin'
+                nome={props.nome}
             />
             <Icon
                 iconClass=''
