@@ -1,5 +1,5 @@
 .repo-name {
-    width: 375.5px;
+    width: 600px;
     height: 40.8px;
     font-family: Raleway;
     font-size: 35px;
@@ -10,6 +10,7 @@
     letter-spacing: normal;
     color: #ac53f2;
     margin: 0;
+    margin-bottom: 9px;
 }
 
 .repo-description {
@@ -24,8 +25,9 @@
     letter-spacing: normal;
     color: #000000;
     margin: 0;
+    margin-bottom: 70px;
 }
 
-.repo-margin {
+.repo-margin-top {
     margin-top: 60px;
 }

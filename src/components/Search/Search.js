@@ -1,6 +1,5 @@
 import React from 'react'
 import IconSearch from '../../assets/icons/Search Icon.png'
-import { Link } from 'react-router-dom'
 
 import './search.css'
 

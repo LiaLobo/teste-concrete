@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200i,300,400&display=swap');
+
+.not-found-nav {
+  width: 100vw;
+  display: flex;
+  margin-top: 35px;
+  margin-right: 27px;   
+}
+
+.not-found-div {
+  margin: 70px;
+}
+
+.not-found-message {
+  width: 550px;
+  font-family: Raleway;
+  font-size: 40px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #ac53f2;
+  }
