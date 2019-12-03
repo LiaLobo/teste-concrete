@@ -5,7 +5,7 @@ import './repositories.css'
 
 const Repositories = (props) => {
     const { title, description } = props
-    console.log(props)
+    // console.log(props)
     return (
         <div className='repo-margin-top'>
             <Description

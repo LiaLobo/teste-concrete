@@ -8,9 +8,9 @@ import Star from '../../assets/icons/star icon.png'
 import './styles.css'
 
 const Result = (props) => {
-    
-     const { repos } = props.location.state
-      console.log(repos)
+    const { repos } = props.location.state
+    // const { user } =
+    // console.log(repos)
     return (
         <Fragment>
             <div className='result-nav'>
@@ -18,23 +18,25 @@ const Result = (props) => {
             </div>
             <div className='result-flex'>
                 <div className='result-margin'>
-                    <Profile />
+                            <Profile
+                                
+                            />
                 </div>
                 <div>
                     <ul>
-                        {repos.map(i => (
-                            <li key={i.id}>
+                        {repos.map(repo => (
+                            <li key={repo.id}>
                                 <Repositories
-                                    title={i.name}
-                                    description={i.description}
+                                    title={repo.name}
+                                    description={repo.description}
                                 />
                                 <Icon
                                     iconClass='star-icon'
                                     icon={Star}
                                     alt='Ícone de estrela'
-                                    iconSpan={i.stargazers_count}
+                                    iconSpan={repo.stargazers_count}
                                 />
-                             </li>
+                            </li>
                         ))}
                     </ul>
                 </div>

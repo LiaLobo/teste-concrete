@@ -33,10 +33,13 @@ class Home extends Component {
         })
     }
 
-    search = () => {
-        getUser(this.state.value).then((response) => {
-            this.setState({
-                user: response.data
+    searchUser = (login) => {
+        getUser(login/*this.state.value*/).then((response) => {
+            // this.setState({
+            console.log(response)
+            this.props.history.push({
+                pathname: '/result',
+                state: { user: response.data }
             })
         }
         ).catch(err => console.log(err))
@@ -44,16 +47,12 @@ class Home extends Component {
 
     searchRepos = (login) => {
         getRepos(login).then((response) => {
-            console.log(response)
-        //    this.setState({ repos: response.data})
-           this.props.history.push({
+            // console.log(response)
+            this.props.history.push({
                 pathname: '/result',
                 state: { repos: response.data }
             })
         })
-            // this.props.history.push('/repositories', this.setState = {
-            //     data: response.data
-            // })
     }
 
     render() {

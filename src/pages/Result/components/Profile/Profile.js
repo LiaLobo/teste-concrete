@@ -10,10 +10,13 @@ import Followers from '../../../../assets/icons/followers icon.png'
 
 import './profile.css'
 
-const Profile = () => {
+const Profile = (props) => {
+    const { avatar_url } = props
     return (
         <Fragment>
-            <ImageProfile />
+            <ImageProfile
+                imgProf={avatar_url}
+            />
             <Description 
                 classDescriptionH4='user-name'
                 userName='Darth Vader'
