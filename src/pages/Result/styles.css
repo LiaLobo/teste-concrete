@@ -18,6 +18,12 @@
     margin: 0;
 }
 
+.block-icon {
+    width: 286px;
+    display: block;
+    margin: 0;
+}
+
 ul {
     list-style: none;
 }

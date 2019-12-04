@@ -33,27 +33,47 @@ class Home extends Component {
         })
     }
 
-    searchUser = (login) => {
-        getUser(login/*this.state.value*/).then((response) => {
-            // this.setState({
-            console.log(response)
-            this.props.history.push({
-                pathname: '/result',
-                state: { user: response.data }
-            })
-        }
-        ).catch(err => console.log(err))
-    }
+    searchUser = () => {
+            getUser(this.state.value).then((res) => {
+                // console.log(res)
+        //         this.setState({
+        //         user: res.data
+        //   })
+                    this.props.history.push({
+                        pathname: '/result',
+                        state: {user: res.data}
+                    })
+                })
+            }
+            
 
-    searchRepos = (login) => {
-        getRepos(login).then((response) => {
-            // console.log(response)
-            this.props.history.push({
-                pathname: '/result',
-                state: { repos: response.data }
-            })
-        })
-    }
+    // searchRepos = (login) => {
+    //     getRepos(login).then((response) => {
+    //         // console.log(response)
+    //         this.props.history.push({
+    //             pathname: '/result',
+    //             state: { repos: response.data }
+    //         })
+    //     })
+    // }
+
+    // search = (login) => {
+    //     getUser(this.state.value).then((response) => {
+
+    //         this.props.history.push({
+    //             pathname: '/result',
+    //             state: {user: response.data}
+    //         })
+    //     })
+    //     getRepos(login).then((response) => {
+    //         // console.log(response)
+    //         this.props.history.push({
+    //             pathname: '/result',
+    //             state: { repos: response.data }
+    //         })
+    //     })
+    // }
+    
 
     render() {
         return (
@@ -63,7 +83,7 @@ class Home extends Component {
                     classFontSpan='github-search text-style-1'
                 />
                 <Search
-                    click={() => this.searchRepos(this.state.value)}
+                    click={() => this.searchUser(this.state.value)}
                     inputValue={this.catchValue}
                 />
             </div>
