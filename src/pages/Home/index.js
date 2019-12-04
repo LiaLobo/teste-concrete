@@ -47,32 +47,39 @@ class Home extends Component {
             }
             
 
-    // searchRepos = (login) => {
-    //     getRepos(login).then((response) => {
-    //         // console.log(response)
-    //         this.props.history.push({
-    //             pathname: '/result',
-    //             state: { repos: response.data }
-    //         })
-    //     })
-    // }
+    searchRepos = (login) => {
+        getRepos(login).then((response) => {
+            // console.log(response)
+            this.props.history.push({
+                pathname: '/result',
+                state: { repos: response.data }
+            })
+        })
+    }
 
-    // search = (login) => {
-    //     getUser(this.state.value).then((response) => {
+    search = (login) => {
+        this.searchUser()
+        this.searchRepos(login)
+    }
 
-    //         this.props.history.push({
-    //             pathname: '/result',
-    //             state: {user: response.data}
-    //         })
-    //     })
-    //     getRepos(login).then((response) => {
-    //         // console.log(response)
-    //         this.props.history.push({
-    //             pathname: '/result',
-    //             state: { repos: response.data }
-    //         })
-    //     })
-    // }
+        // searchUser = () => {
+        //     getUser(this.state.value).then((response) => {
+
+        //         this.props.history.push({
+        //             pathname: '/result',
+        //             state: {user: response.data}
+        //         })
+        //     })
+        // }
+        // searchRepos = (login) => {
+        //     getRepos(login).then((response) => {
+        //         // console.log(response)
+        //         this.props.history.push({
+        //             pathname: '/result',
+        //             state: { repos: response.data }
+        //         })
+        //     })
+        // }
     
 
     render() {
@@ -83,7 +90,7 @@ class Home extends Component {
                     classFontSpan='github-search text-style-1'
                 />
                 <Search
-                    click={() => this.searchUser(this.state.value)}
+                    click={() => this.search(this.state.value)}
                     inputValue={this.catchValue}
                 />
             </div>
