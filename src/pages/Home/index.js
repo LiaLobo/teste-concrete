@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Search from '../../components/Search/Search'
 import Logo from '../../components/Logo/Logo'
-import { getUser, getRepos } from '../../service/user'
+import { getUser } from '../../service/user'
 
 import './styles.css'
 
@@ -23,7 +23,7 @@ class Home extends Component {
         this.state = {
             value: '',
             user: {},
-            repos: {}
+            err: ''
         }
     }
 
@@ -33,34 +33,58 @@ class Home extends Component {
         })
     }
 
-    searchUser = () => {
-            getUser(this.state.value).then((res) => {
-                // console.log(res)
-        //         this.setState({
-        //         user: res.data
-        //   })
-                    this.props.history.push({
-                        pathname: '/result',
-                        state: {user: res.data}
-                    })
+    search = () => {
+        if(this.state.value !== '') {
+            getUser(this.state.value).then(response => {
+                this.setState({
+                    user: response.data
                 })
-            }
+                this.props.history.push({
+                    pathname: '/result',
+                    state: {
+                        user: this.state.user
+                    }
+                })
+            })
+            .catch(err => {
+                this.props.history.push({
+                    pathname: 'result',
+                    state: {
+                        err: 'user not found :(',
+                    }
+                })
+            })
+        }
+    }
+
+    // searchUser = () => {
+    //         getUser(this.state.value).then((res) => {
+    //             // console.log(res)
+    //     //         this.setState({
+    //     //         user: res.data
+    //     //   })
+    //                 this.props.history.push({
+    //                     pathname: '/result',
+    //                     state: {user: res.data}
+    //                 })
+    //             })
+    //         }
             
 
-    searchRepos = (login) => {
-        getRepos(login).then((response) => {
-            // console.log(response)
-            this.props.history.push({
-                pathname: '/result',
-                state: { repos: response.data }
-            })
-        })
-    }
+    // searchRepos = (login) => {
+    //     getRepos(login).then((response) => {
+    //         // console.log(response)
+    //         this.props.history.push({
+    //             pathname: '/result',
+    //             state: { repos: response.data }
+    //         })
+    //     })
+    // }
 
-    search = (login) => {
-        this.searchUser()
-        this.searchRepos(login)
-    }
+    // search = (login) => {
+    //     this.searchUser()
+    //     this.searchRepos(login)
+    // }
 
         // searchUser = () => {
         //     getUser(this.state.value).then((response) => {
@@ -90,8 +114,8 @@ class Home extends Component {
                     classFontSpan='github-search text-style-1'
                 />
                 <Search
-                    click={() => this.search(this.state.value)}
                     inputValue={this.catchValue}
+                    click={() => this.search(this.state.value)}
                 />
             </div>
         )
