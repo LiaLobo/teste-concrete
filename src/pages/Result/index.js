@@ -14,88 +14,6 @@ import { getUser, getRepos } from '../../service/user'
 
 import './styles.css'
 
-// const Result = (props) => {
-//     // const repos = props.location.state.repos
-//     // const user = props.location.state.user
-//     const { repos, user } = props.location.state
-//     return (
-//         <Fragment>
-//             <div className='result-nav'>
-//                 <Nav />
-//             </div>
-//             <div className='result-flex'>
-//                 <div className='result-margin'>
-//                     <ImageProfile 
-//                         imgProf={user.avatar_url}
-//                     />
-//                     <Description 
-//                         classDescriptionH4='user-name'
-//                         title={user.name}
-//                         classDescriptionP='user-login'
-//                         description={user.login}
-//                     />
-//                 <div className='block-icon'>
-//                     <Icon
-//                         iconClass='margin organization-icon'
-//                         icon={Organization}
-//                         alt='Ícon circular com três círculos menores em cima'
-//                         iconSpan={user.bio}
-//                     />
-//                     <Icon
-//                         iconClass='margin location-icon'
-//                         icon={Location}
-//                         alt='Ícone de um globo terrestre'
-//                         iconSpan={user.location}
-//                     />
-//                     <Icon
-//                         iconClass='margin star-icon'
-//                         icon={Star}
-//                         alt='Ícone de um estrela'
-//                         iconSpan={user.email}
-//                     />
-//                     <Icon
-//                         iconClass='margin respositories-icon'
-//                         icon={Repositorie}
-//                         alt='Ícone de uma caixa'
-//                         iconSpan={user.public_repos}
-//                     />
-//                     <Icon
-//                         iconClass='margin followers'
-//                         icon={Followers}
-//                         alt='Ícone de duas silhuetas de pessoas'
-//                         iconSpan={user.followers}
-//                     />
-//                     <Icon
-//                         iconClass='margin followers'
-//                         icon={Followers}
-//                         alt='Ícone de duas silhuetas de pessoas'
-//                         iconSpan={user.following}
-//                     />
-//                 </div>
-//                 </div>
-//                 <div>
-//                     <ul>
-//                         {repos.map(repo => (
-//                             <li key={repo.id}>
-//                                 <Repositories
-//                                     title={repo.name}
-//                                     description={repo.description}
-//                                 />
-//                                 <Icon
-//                                     iconClass='star-icon'
-//                                     icon={Star}
-//                                     alt='Ícone de estrela'
-//                                     iconSpan={repo.stargazers_count}
-//                                 />
-//                             </li>
-//                         ))}
-//                     </ul>
-//                 </div>
-//             </div>
-//         </Fragment>
-//     )
-// }
-
 class Result extends React.Component {
     constructor(props) {
         super(props)
@@ -110,42 +28,50 @@ class Result extends React.Component {
     componentDidMount() {
         if(this.props.location.state) {
             if(this.props.location.state.user) {
-                this.searchRepos(this.props.location.state.user.login)
                 this.setState({
                     user: this.props.location.state.user
                 })
+                this.searchRepos(this.props.location.state.user.login)
             }
-            if(this.props.location.state.error) {
+            if(this.props.location.state.err) {
                 this.setState({
-                    err: 'user not found :('
+                    err: 'Not found'
                 })
             }
         }
     }
 
-    searchUser = (valor) => {
-        getUser(valor).then(response => {
-            this.setState({
-                user: response.data
-            })
-        })
-    }
-
-    searchRepos = (name) => {
-        getRepos(name).then(response => {
-            this.setState({
-                repos: response.data
-            })
-        })
-    }
-
-    catchValue = (event) => {
+     catchValue = (event) => {
         this.setState({
             value: event.target.value
         })
     }
 
-    search = event => {
+    searchUser = (value) => {
+        getUser(value).then(response => {
+            this.setState({
+                user: response.data,
+                err: ''
+            })
+        })
+        .catch((err) => {
+            this.setState({
+                err: 'Not found'
+            })
+        })
+    }
+
+    searchRepos = (value) => {
+        getRepos(value).then(response => {
+            this.setState({
+                repos: response.data
+            })
+        })
+        .catch((err) => {
+        })
+    }
+
+    search = (value) => {
         this.searchUser(this.state.value)
         this.searchRepos(this.state.value)
     }
@@ -159,10 +85,11 @@ class Result extends React.Component {
                     <Nav
                         inputValue={this.catchValue}
                         click={this.search}
+                        placeholder={this.state.value}
                     />
                 </div>
 
-                {this.state.err !== '' ? 
+                {!this.state.err ? 
                     <div className='result-flex'>
                         <div className='result-margin'>
                             <ImageProfile 

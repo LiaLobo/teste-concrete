@@ -5,18 +5,6 @@ import { getUser } from '../../service/user'
 
 import './styles.css'
 
-// export default function Home() {
-//     return (
-//         <div className='home'>
-//             <Logo
-//                 classFontH1='github-search'
-//                 classFontSpan='github-search text-style-1'
-//             />
-//             <Search />
-//         </div>
-//     )
-// }
-
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -37,7 +25,8 @@ class Home extends Component {
         if(this.state.value !== '') {
             getUser(this.state.value).then(response => {
                 this.setState({
-                    user: response.data
+                    user: response.data,
+                    err: ''
                 })
                 this.props.history.push({
                     pathname: '/result',
@@ -47,64 +36,18 @@ class Home extends Component {
                 })
             })
             .catch(err => {
+                this.setState({
+                    err: 'Not found'
+                })
                 this.props.history.push({
-                    pathname: 'result',
+                    pathname: '/result',
                     state: {
-                        err: 'user not found :(',
+                        err: this.state.err
                     }
                 })
             })
         }
     }
-
-    // searchUser = () => {
-    //         getUser(this.state.value).then((res) => {
-    //             // console.log(res)
-    //     //         this.setState({
-    //     //         user: res.data
-    //     //   })
-    //                 this.props.history.push({
-    //                     pathname: '/result',
-    //                     state: {user: res.data}
-    //                 })
-    //             })
-    //         }
-            
-
-    // searchRepos = (login) => {
-    //     getRepos(login).then((response) => {
-    //         // console.log(response)
-    //         this.props.history.push({
-    //             pathname: '/result',
-    //             state: { repos: response.data }
-    //         })
-    //     })
-    // }
-
-    // search = (login) => {
-    //     this.searchUser()
-    //     this.searchRepos(login)
-    // }
-
-        // searchUser = () => {
-        //     getUser(this.state.value).then((response) => {
-
-        //         this.props.history.push({
-        //             pathname: '/result',
-        //             state: {user: response.data}
-        //         })
-        //     })
-        // }
-        // searchRepos = (login) => {
-        //     getRepos(login).then((response) => {
-        //         // console.log(response)
-        //         this.props.history.push({
-        //             pathname: '/result',
-        //             state: { repos: response.data }
-        //         })
-        //     })
-        // }
-    
 
     render() {
         return (
