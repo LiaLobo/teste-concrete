@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import Nav from './components/NavSearch/Nav'
 import ImageProfile from './components/ImageProfile/ImageProfile'
 import Description from './components/Description/Description'
@@ -14,13 +14,13 @@ import { getUser, getRepos } from '../../service/user'
 
 import './styles.css'
 
-class Result extends React.Component {
+class Result extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: '',
             user: {},
             repos: [],
+            value: '',
             err: ''
         }
     }
@@ -35,16 +35,17 @@ class Result extends React.Component {
             }
             if(this.props.location.state.err) {
                 this.setState({
-                    err: 'Not found'
+                    err: this.props.location.state.err
                 })
             }
         }
     }
 
-     catchValue = (event) => {
+    catchValue = (event) => {
         this.setState({
             value: event.target.value
         })
+        console.log(this.state.value)
     }
 
     searchUser = (value) => {
@@ -56,7 +57,7 @@ class Result extends React.Component {
         })
         .catch((err) => {
             this.setState({
-                err: 'Not found'
+                err: 'User not found'
             })
         })
     }
@@ -67,17 +68,15 @@ class Result extends React.Component {
                 repos: response.data
             })
         })
-        .catch((err) => {
-        })
     }
 
-    search = (value) => {
+    search = () => {
         this.searchUser(this.state.value)
         this.searchRepos(this.state.value)
     }
 
     render() {
-        const { avatar_url, name, login, bio, location, company, public_repos, followers, following } = this.state.user
+        const { avatar_url, name, bio, location, company, public_repos, followers, following } = this.state.user
         
         return (
              <Fragment>
@@ -85,7 +84,6 @@ class Result extends React.Component {
                     <Nav
                         inputValue={this.catchValue}
                         click={this.search}
-                        placeholder={this.state.value}
                     />
                 </div>
 
@@ -99,26 +97,20 @@ class Result extends React.Component {
                                 classDescriptionH4='user-name'
                                 title={name}
                                 classDescriptionP='user-login'
-                                description={login}
+                                description={bio}
                             />
                             <div className='block-icon'>
                                 <Icon
                                     iconClass='margin organization-icon'
                                     icon={Organization}
                                     alt='Ícon circular com três círculos menores em cima'
-                                    iconSpan={bio}
+                                    iconSpan={company}
                                 />
                                 <Icon
                                     iconClass='margin location-icon'
                                     icon={Location}
                                     alt='Ícone de um globo terrestre'
                                     iconSpan={location}
-                                />
-                                <Icon
-                                    iconClass='margin star-icon'
-                                    icon={Star}
-                                    alt='Ícone de um estrela'
-                                    iconSpan={company}
                                 />
                                 <Icon
                                     iconClass='margin respositories-icon'
@@ -142,7 +134,7 @@ class Result extends React.Component {
                         </div>
                     <div>
                         <ul>
-                            {this.state.repos.map(repo => (
+                            {this.state.repos.sort(function repoStars(a, b){return b.stargazers_count - a.stargazers_count}).map(repo => (
                                 <li key={repo.id}>
                                     <Repositories
                                         title={repo.name}

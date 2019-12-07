@@ -22,20 +22,20 @@ class Home extends Component {
     }
 
     search = () => {
-        if(this.state.value !== '') {
-            getUser(this.state.value).then(response => {
-                this.setState({
-                    user: response.data,
-                    err: ''
-                })
-                this.props.history.push({
-                    pathname: '/result',
-                    state: {
-                        user: this.state.user
-                    }
-                })
+        getUser(this.state.value).then(response => {
+            this.setState({
+                user: response.data,
+                err: '',
+                value: ''
             })
-            .catch(err => {
+            this.props.history.push({
+                pathname: '/result',
+                state: {
+                    user: this.state.user
+                }
+            })
+        })
+            .catch(() => {
                 this.setState({
                     err: 'Not found'
                 })
@@ -46,7 +46,6 @@ class Home extends Component {
                     }
                 })
             })
-        }
     }
 
     render() {

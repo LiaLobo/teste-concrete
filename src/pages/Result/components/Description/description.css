@@ -1,5 +1,5 @@
 .user-name {
-  width: 280px;
+  width: 335px;
   height: 40px;
   font-family: Raleway;
   font-size: 35px;
@@ -13,7 +13,7 @@
 }
 
 .user-login {
-  width: 280px;
+  width: 335px;
   height: 25px;
   font-family: Raleway;
   font-size: 20px;
@@ -23,5 +23,5 @@
   line-height: normal;
   letter-spacing: normal;
   color: #5c5c5c;
-  margin: 0px 25px 30px;
+  margin: 0px 25px 85px;
 }
