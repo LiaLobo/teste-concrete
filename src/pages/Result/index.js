@@ -45,7 +45,6 @@ class Result extends Component {
         this.setState({
             value: event.target.value
         })
-        console.log(this.state.value)
     }
 
     searchUser = (value) => {
